@@ -8,7 +8,7 @@
   "sombra_color": "#141416",
   "sombra": 2,
   "interletra": 0,
-  "base": 1168,
+  "base": 1260,
   "palabras": 2,
   "letras": 16,
   "minimo": 0.5,
@@ -17,7 +17,7 @@
   "retraso": 0.05,
   "correcciones": {},
   "destacar": {
-    "color": "#1E6FD9",
+    "color": "#4FB0FF",
     "palabras": [
       "mora",
       "ingresos",
@@ -25,7 +25,8 @@
       "costos",
       "cartera",
       "tasas",
-      "vender"
+      "vender",
+      "tasa"
     ]
   },
   "chicas": [

@@ -38,7 +38,10 @@ for i, w in enumerate(palabras):
     cambio_tramo = sig is not None and sig.get('tramo') != w.get('tramo')
     if sig is None or fin_frase or lleno or cambio_tramo:
         # Una palabra chica va con la que sigue.
-        if lleno and not fin_frase and sig is not None and len(g) > 1 and limpiar(g[-1]['p']).lower() in CHICAS:
+        solo_chicas = all(re.sub(r'[^\wáéíóúüñ]', '', x['p'].lower()) in CHICAS for x in g[:-1])
+        if lleno and not fin_frase and sig is not None and len(g) > 1 and not solo_chicas \
+                and g[-2]['b'] - g[0]['a'] >= E.get('minimo', .5) \
+                and limpiar(g[-1]['p']).lower() in CHICAS:
             resto = [g.pop()]
             grupos.append(g)
             g = resto
@@ -75,10 +78,12 @@ for i, g in enumerate(unidos):
         fin = sig if sig - fin < .2 else min(fin, sig)
     partes = []
     for w in g:
-        t = texto(w['p'])
-        if t.lower() in marcadas:
-            t = '{\\c' + color(d.get('color', '#FF3B30')) + '&}' + t + '{\\r}'
-        partes.append(t.replace('{\\c', '\0').replace('{', '').replace('\0', '{\\c'))
+        t = texto(w['p']).replace('{', '').replace('}', '')
+        # La palabra se compara sin signos: "mora?" también se marca.
+        m = re.match(r'^([¿¡"“]*)(.*?)([?!%"”]*)$', t)
+        if m and m.group(2).lower() in marcadas:
+            t = m.group(1) + '{\\c' + color(d.get('color', '#FF3B30')) + '&}' + m.group(2) + '{\\r}' + m.group(3)
+        partes.append(t)
     filas.append((ini, fin, ' '.join(partes)))
 
 margen = a.alto - E.get('base', 1168)
