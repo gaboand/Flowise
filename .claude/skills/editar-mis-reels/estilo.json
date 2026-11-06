@@ -1,6 +1,6 @@
 {
   "fuente": "Arial",
-  "tamano": 82,
+  "tamano": 96,
   "negrita": true,
   "color": "#FFFFFF",
   "borde_color": "#141416",
@@ -9,13 +9,46 @@
   "sombra": 2,
   "interletra": 0,
   "base": 1168,
-  "palabras": 3,
-  "letras": 23,
+  "palabras": 2,
+  "letras": 16,
   "minimo": 0.5,
   "mayusculas": "minuscula",
   "sacar_puntuacion": true,
   "retraso": 0.05,
   "correcciones": {},
-  "destacar": { "color": "#FF3B30", "palabras": [] },
-  "chicas": ["a", "al", "con", "de", "del", "el", "en", "la", "las", "lo", "los", "para", "por", "que", "se", "sin", "su", "tu", "un", "una", "y"]
+  "destacar": {
+    "color": "#1E6FD9",
+    "palabras": [
+      "mora",
+      "ingresos",
+      "riesgo",
+      "costos",
+      "cartera",
+      "tasas",
+      "vender"
+    ]
+  },
+  "chicas": [
+    "a",
+    "al",
+    "con",
+    "de",
+    "del",
+    "el",
+    "en",
+    "la",
+    "las",
+    "lo",
+    "los",
+    "para",
+    "por",
+    "que",
+    "se",
+    "sin",
+    "su",
+    "tu",
+    "un",
+    "una",
+    "y"
+  ]
 }
